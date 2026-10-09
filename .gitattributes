@@ -1,0 +1,4 @@
+# サンプルデータは文字コード・改行コード（CRLF）も含めて元のまま配布するため、変換・空白チェックをしない
+samples/**   -text -whitespace
+*.png        binary
+*.xlsx       binary

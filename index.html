@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excel・CSV業務自動化ツール 制作実績</title>
+<meta name="description" content="複数のExcel・CSVの結合、列の整形、2ファイルの照合（差分チェック）を画面操作だけで行うWindowsアプリの制作実績です。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f5fa8'/%3E%3Cpath d='M8 9h16M8 16h16M8 23h10' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="#top">Excel・CSV業務自動化ツール</a>
+    <nav class="nav" aria-label="ページ内リンク">
+      <a href="#problems">解決できること</a>
+      <a href="#features">機能</a>
+      <a href="#before-after">Before / After</a>
+      <a href="#usecases">対応業務</a>
+      <a href="#quality">品質</a>
+      <a href="#contact">ご相談</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ ヒーロー ============ -->
+<div class="hero">
+  <div class="container">
+    <span class="eyebrow">制作実績 ／ 業務自動化ツール</span>
+    <h1>Excel・CSVの「まとめる・整える・突き合わせる」を<br>ボタン操作だけで</h1>
+    <p class="lead">
+      毎月の手作業になりがちな、複数ファイルの結合、列の並べ替えや書式の統一、
+      2つの表の照合（差分チェック）を自動化する Windows アプリを制作しました。
+      プログラミングの知識がない担当者でも、画面の操作だけで、毎回同じ品質の結果を出せます。
+    </p>
+    <ul class="badges">
+      <li>Windows用・インストール不要</li>
+      <li>元ファイルを書き換えない</li>
+      <li>処理結果レポートを自動保存</li>
+      <li>自動テスト 219件 合格</li>
+    </ul>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#before-after">Before / After を見る</a>
+      <a class="btn btn-ghost" href="#contact">ご相談について</a>
+    </div>
+    <div class="hero-shot">
+      <a href="assets/img/screen-match.png" title="原寸で表示"><img src="assets/img/screen-match.png" width="1122" height="832"
+           alt="照合画面。注文データと出荷データを照合し、不一致2件・注文のみ2件・出荷のみ1件を表示している"></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 解決できる業務課題 ============ -->
+<section id="problems">
+  <div class="container">
+    <h2 class="section-title">こんなお困りごとを解決します</h2>
+    <p class="section-lead">Excel や CSV を使う事務作業で、時間がかかる・ミスが起きやすい作業を自動化します。</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <p class="problem">店舗別・月別に届くファイルを、毎月コピー＆貼り付けで1つにまとめている</p>
+        <p class="solution">ファイルを選んで1クリックで結合。列の並び順や文字コードが違うファイルも自動でそろえます。</p>
+      </div>
+      <div class="card">
+        <p class="problem">CSVをExcelで開くと「00123」が「123」になり、取引先コードが壊れる</p>
+        <p class="solution">コードや番号は文字として扱い、先頭の0を消しません。消えてしまった0を桁数指定で戻すこともできます。</p>
+      </div>
+      <div class="card">
+        <p class="problem">日付の書き方がバラバラ（2024/1/5、2024年1月5日、令和6年1月5日…）</p>
+        <p class="solution">指定した列の日付を1つの書き方に統一。変換できない値は、何行目かを付けて一覧にします。</p>
+      </div>
+      <div class="card">
+        <p class="problem">システムから出したデータを、別システムの取り込み形式に毎回手作業で整えている</p>
+        <p class="solution">列名・順番・書式の設定をファイルに保存。次回からは設定を読み込んで実行するだけです。</p>
+      </div>
+      <div class="card">
+        <p class="problem">注文と出荷、請求と入金などの突き合わせを、目視やVLOOKUPで行っている</p>
+        <p class="solution">「一致・不一致・片方にしかない」を自動で分類。違うセルは赤く色付けしてExcelに出力します。</p>
+      </div>
+      <div class="card">
+        <p class="problem">同じ番号が2行あって、突き合わせの結果がおかしくなったことがある</p>
+        <p class="solution">番号の重複や空欄を事前に見つけ、既定では処理を止めて行番号をお知らせします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3つの機能 ============ -->
+<section id="features" class="alt">
+  <div class="container">
+    <h2 class="section-title">3つの機能</h2>
+    <p class="section-lead">画面上部のタブで機能を切り替えます。どの機能も、実行前に結果をプレビューで確認できます。</p>
+
+    <div class="feature">
+      <div class="feature-text">
+        <span class="feature-num">機能 ①</span>
+        <h3>一括結合 ― 複数ファイルを1つに</h3>
+        <ul class="check">
+          <li>CSV・Excel を何個でもまとめて結合（Excelの複数シートにも対応）</li>
+          <li>文字コード（UTF-8／Shift_JIS）の違いを自動で判別し、文字化けを防止</li>
+          <li>列の順番が違っても、列名を見て正しくそろえる</li>
+          <li>「どのファイルから来た行か」が分かる列を追加</li>
+          <li>読み込めないファイルがあっても止まらず、レポートに記録</li>
+        </ul>
+      </div>
+      <figure>
+        <a href="assets/img/screen-merge.png" title="原寸で表示"><img src="assets/img/screen-merge.png" width="1122" height="832" loading="lazy"
+             alt="一括結合画面。3つの売上ファイルを選択し、結合結果120行をプレビューしている"></a>
+        <figcaption>3か月分の売上ファイル（文字コード・列の順番がバラバラ）を結合したところ</figcaption>
+      </figure>
+    </div>
+
+    <div class="feature reverse">
+      <div class="feature-text">
+        <span class="feature-num">機能 ②</span>
+        <h3>列の変換 ― 取り込み形式に整える</h3>
+        <ul class="check">
+          <li>列名の変更、並べ替え、不要な列の削除</li>
+          <li>「1,234」「¥1,000」「▲500」「全角数字」を数値に変換</li>
+          <li>西暦・和暦・Excelの日付を、指定した書き方に統一</li>
+          <li>番号の桁数をそろえる（「123」→「000123」）</li>
+          <li>設定を保存しておけば、次回からワンクリック</li>
+        </ul>
+      </div>
+      <figure>
+        <a href="assets/img/screen-transform.png" title="原寸で表示"><img src="assets/img/screen-transform.png" width="1122" height="832" loading="lazy"
+             alt="列の変換画面。列ごとに出力名や変換方法を設定し、変換後のデータをプレビューしている"></a>
+        <figcaption>列ごとに「出力するか・列名・変換方法」を設定する画面</figcaption>
+      </figure>
+    </div>
+
+    <div class="feature">
+      <div class="feature-text">
+        <span class="feature-num">機能 ③</span>
+        <h3>照合・差分チェック ― 2つの表を突き合わせる</h3>
+        <ul class="check">
+          <li>注文番号＋商品コードのような、複数列の組み合わせで突き合わせ</li>
+          <li>左右で列名が違っても対応（例: 「注文番号」と「受注No」）</li>
+          <li>金額は「1円の差までは一致」のような許容範囲を指定可能</li>
+          <li>番号の重複・空欄を事前にチェックし、誤った突き合わせを防止</li>
+          <li>結果はExcelに出力。違うセルは赤く表示</li>
+        </ul>
+      </div>
+      <figure>
+        <a href="assets/img/screen-match.png" title="原寸で表示"><img src="assets/img/screen-match.png" width="1122" height="832" loading="lazy"
+             alt="照合画面。キー列と比較列を指定し、照合結果を判定ごとのタブで表示している"></a>
+        <figcaption>注文データ（CSV）と出荷データ（Excel）を照合したところ</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Before / After ============ -->
+<section id="before-after">
+  <div class="container">
+    <h2 class="section-title">Before / After</h2>
+    <p class="section-lead">付属のサンプルデータ（すべて架空のデータ）で実際に処理した結果です。</p>
+
+    <!-- 結合 -->
+    <article class="ba">
+      <div class="ba-head">
+        <h3>例1. 3か月分の売上ファイルを1つに</h3>
+        <span>一括結合</span>
+      </div>
+      <div class="ba-grid">
+        <div class="panel before">
+          <div class="panel-label">BEFORE ― 形式がバラバラな3ファイル</div>
+          <div class="panel-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>ファイル</th><th>文字コード</th><th>日付の書き方</th><th>列の違い</th></tr></thead>
+                <tbody>
+                  <tr><td>4月分.csv</td><td>UTF-8</td><td>2024/04/05</td><td class="muted">―</td></tr>
+                  <tr><td>5月分.csv</td><td class="cell-ng">Shift_JIS</td><td>2024年5月17日</td><td class="muted">―</td></tr>
+                  <tr><td>6月分.csv</td><td>UTF-8</td><td>2024-06-21</td><td class="cell-ng">列の順番が違う・「備考」列が多い</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">普通に貼り付けると、文字化けや列ずれが起きやすい状態です。</p>
+          </div>
+        </div>
+        <div class="ba-arrow" aria-hidden="true">→</div>
+        <div class="panel after">
+          <div class="panel-label">AFTER ― 120行の1ファイル</div>
+          <div class="panel-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>元ファイル</th><th>伝票番号</th><th>売上日</th><th>店舗コード</th><th>顧客コード</th><th>数量</th></tr></thead>
+                <tbody>
+                  <tr><td>4月分</td><td>202404-0001</td><td>2024/04/05</td><td class="cell-fix">003</td><td class="cell-fix">000456</td><td class="num">8</td></tr>
+                  <tr><td>5月分</td><td>202405-0001</td><td>2024年5月17日</td><td class="cell-fix">003</td><td class="cell-fix">000456</td><td class="num">6</td></tr>
+                  <tr><td>6月分</td><td>202406-0001</td><td>2024-06-21</td><td class="cell-fix">010</td><td class="cell-fix">002048</td><td class="num">19</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">列の順番は自動でそろい、コードの先頭の0もそのまま。日付の統一は次の「列の変換」で行えます。</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 変換 -->
+    <article class="ba">
+      <div class="ba-head">
+        <h3>例2. 入力ミスが混ざった社員データを整える</h3>
+        <span>列の変換</span>
+      </div>
+      <div class="ba-grid">
+        <div class="panel before">
+          <div class="panel-label">BEFORE ― 書き方がバラバラ</div>
+          <div class="panel-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>社員番号</th><th>氏名</th><th>入社日</th><th>基本給</th><th>手当</th></tr></thead>
+                <tbody>
+                  <tr><td>00012</td><td>␣␣山田 太郎␣</td><td>2020/4/1</td><td class="num">250,000</td><td class="num">¥12,000</td></tr>
+                  <tr><td class="cell-ng">12</td><td>鈴木　花子</td><td class="cell-ng">令和3年4月1日</td><td class="num cell-ng">２４０，０００</td><td class="num cell-ng">▲3,000</td></tr>
+                  <tr><td>0013</td><td class="cell-ng">ＡＢＣ　ｼﾞﾛｳ</td><td>2022-04-01</td><td class="cell-ng">abc</td><td></td></tr>
+                  <tr><td>00014</td><td>佐藤 次郎</td><td class="cell-ng">2023/02/30</td><td class="num">260000</td><td class="num">(1,500)</td></tr>
+                  <tr><td>00015</td><td class="cell-ng">=HYPERLINK(…)</td><td class="cell-ng">45383</td><td class="num">255000</td><td class="num">0</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="ba-arrow" aria-hidden="true">→</div>
+        <div class="panel after">
+          <div class="panel-label">AFTER ― 取り込める形式に統一</div>
+          <div class="panel-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>社員CD</th><th>氏名</th><th>入社日</th><th>基本給</th><th>手当</th></tr></thead>
+                <tbody>
+                  <tr><td>00012</td><td class="cell-fix">山田 太郎</td><td class="cell-fix">2020/04/01</td><td class="num">250000</td><td class="num">12000</td></tr>
+                  <tr><td class="cell-fix">00012</td><td>鈴木 花子</td><td class="cell-fix">2021/04/01</td><td class="num cell-fix">240000</td><td class="num cell-fix">-3000</td></tr>
+                  <tr><td>00013</td><td class="cell-fix">ABC ジロウ</td><td>2022/04/01</td><td><span class="tag tag-warn">要確認</span></td><td></td></tr>
+                  <tr><td>00014</td><td>佐藤 次郎</td><td><span class="tag tag-warn">要確認</span></td><td class="num">260000</td><td class="num">-1500</td></tr>
+                  <tr><td>00015</td><td class="cell-fix">'=HYPERLINK(…)</td><td class="cell-fix">2024/04/01</td><td class="num">255000</td><td class="num">0</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="check points">
+        <li>和暦・Excelの日付の数値（45383）・全角数字・▲マイナスなどを自動で解釈</li>
+        <li>「abc」や存在しない日付「2月30日」は<strong>勝手に推測せず</strong>、何行目のどの値かをレポートで報告</li>
+        <li>Excelで開くと命令として動いてしまう値（=HYPERLINK など）は、無害な文字に変えて出力</li>
+        <li>整えた結果、社員番号「00012」が2人いることが分かり、元データの入力ミスにも気付けます</li>
+      </ul>
+    </article>
+
+    <!-- 照合 -->
+    <article class="ba">
+      <div class="ba-head">
+        <h3>例3. 注文データと出荷データの突き合わせ</h3>
+        <span>照合・差分チェック</span>
+      </div>
+      <div class="ba-grid">
+        <div class="panel before">
+          <div class="panel-label">BEFORE ― 2つの表を目視で確認</div>
+          <div class="panel-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th></th><th>注文データ（CSV）</th><th>出荷データ（Excel）</th></tr></thead>
+                <tbody>
+                  <tr><th>件数</th><td>11行</td><td>11行</td></tr>
+                  <tr><th>番号</th><td>注文番号＋商品コード</td><td>受注No＋商品CD</td></tr>
+                  <tr><th>数量</th><td>注文数量</td><td>出荷数量</td></tr>
+                  <tr><th>金額</th><td>金額（「1,200」形式）</td><td>請求金額（数値）</td></tr>
+                  <tr><th>並び順</th><td>注文順</td><td class="cell-ng">出荷順（バラバラ）</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">列名も並び順も違うため、そのままでは比べにくい状態です。</p>
+          </div>
+        </div>
+        <div class="ba-arrow" aria-hidden="true">→</div>
+        <div class="panel after">
+          <div class="panel-label">AFTER ― 自動で分類したExcelレポート</div>
+          <div class="panel-body">
+            <div class="stats">
+              <div class="stat"><div class="stat-num">5</div><div class="stat-label"><span class="tag tag-ok">完全一致</span></div></div>
+              <div class="stat"><div class="stat-num">2</div><div class="stat-label"><span class="tag tag-ng">値が違う</span></div></div>
+              <div class="stat"><div class="stat-num">2</div><div class="stat-label"><span class="tag tag-warn">未出荷</span></div></div>
+              <div class="stat"><div class="stat-num">1</div><div class="stat-label"><span class="tag tag-warn">注文なしの出荷</span></div></div>
+            </div>
+            <p class="note">ほかに、二重登録された出荷や番号の未入力など5行を「要確認」として別シートに分けています。</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:20px"><strong>出力されたExcelの「不一致」シート</strong><span class="note">（赤いセルが違っている箇所）</span></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>判定</th><th>注文番号</th><th>商品コード</th><th>注文数量</th><th>出荷数量</th><th>金額（注文）</th><th>請求金額（出荷）</th><th>違いのある項目</th></tr></thead>
+          <tbody>
+            <tr><td>不一致</td><td>000103</td><td>P-001</td><td class="num cell-diff">30</td><td class="num cell-diff">20</td><td class="num cell-diff">3,600</td><td class="num cell-diff">2400</td><td>数量・金額（分納）</td></tr>
+            <tr><td>不一致</td><td>000105</td><td>P-005</td><td class="num">2</td><td class="num">2</td><td class="num cell-diff">3,960</td><td class="num cell-diff">4060</td><td>金額（100円の差）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="check points">
+        <li>3,840円と3,841円のような<strong>1円の端数の差は「一致」</strong>とみなす設定にしています（許容範囲は自由に指定可能）</li>
+        <li>出荷が二重に登録されていた注文は、誤って突き合わせず「要確認」に分けます</li>
+        <li>照合の条件（どの列で突き合わせたか、許容範囲など）は、結果のExcelにも記録されます</li>
+      </ul>
+    </article>
+
+    <p class="note">
+      ここで使った入力データと出力結果は、<a href="#samples">サンプルデータ</a>からダウンロードできます。
+    </p>
+  </div>
+</section>
+
+<!-- ============ 対応可能な業務 ============ -->
+<section id="usecases" class="alt">
+  <div class="container">
+    <h2 class="section-title">こんな業務に応用できます</h2>
+    <p class="section-lead">お使いのファイルの形式に合わせて設定・調整することで、次のような業務に対応できます。</p>
+    <div class="grid grid-3">
+      <div class="card usecase"><h3><span class="icon" aria-hidden="true">売</span>売上・実績の集約</h3><p>店舗別・担当者別・月別に届く売上ファイルを、集計前に1つにまとめる。</p></div>
+      <div class="card usecase"><h3><span class="icon" aria-hidden="true">取</span>システム間のデータ移行</h3><p>基幹システムや販売管理ソフトの出力を、会計ソフト等の取り込み形式に変換する。</p></div>
+      <div class="card usecase"><h3><span class="icon" aria-hidden="true">出</span>注文と出荷の突き合わせ</h3><p>未出荷・数量違い・注文のない出荷を洗い出す。</p></div>
+      <div class="card usecase"><h3><span class="icon" aria-hidden="true">請</span>請求と入金の消し込み確認</h3><p>請求データと入金データを照合し、未入金や金額違いを一覧にする。</p></div>
+      <div class="card usecase"><h3><span class="icon" aria-hidden="true">名</span>名簿・会員リストの更新確認</h3><p>新旧の名簿を比べ、住所・電話番号の変更、退会・新規の人を抽出する。</p></div>
+      <div class="card usecase"><h3><span class="icon" aria-hidden="true">品</span>商品マスタの変更点チェック</h3><p>価格改定や商品名の変更、廃番・新商品を、取り込み前に確認する。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ カスタマイズ ============ -->
+<section id="customize">
+  <div class="container">
+    <h2 class="section-title">カスタマイズできること</h2>
+    <p class="section-lead">業務に合わせた調整を前提に作っています。ご依頼内容に応じて、次のような対応が可能です。</p>
+    <dl class="spec">
+      <dt>列の設定</dt>
+      <dd>お使いのファイルに合わせた列名・並び順・書式の設定をご用意。以後は設定を読み込むだけで同じ処理ができます。</dd>
+      <dt>照合の条件</dt>
+      <dd>突き合わせに使う番号、比べる項目、金額の許容範囲、空白や全角・半角の違いを無視するかどうか。</dd>
+      <dt>独自の加工</dt>
+      <dd>税込金額の計算、社内コードへの置き換え、特定条件の行の除外など、業務固有の処理の追加。</dd>
+      <dt>出力の形式</dt>
+      <dd>CSV（UTF-8／Shift_JIS）・Excel。決まったレイアウトのExcelへの出力にも対応可能です。</dd>
+      <dt>画面</dt>
+      <dd>使う機能だけに絞る、項目名を社内の呼び方に合わせる、など。</dd>
+      <dt>自動実行</dt>
+      <dd>画面を使わずに毎朝決まった時刻に実行する形（Windowsのタスクスケジューラ利用）。</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ 品質・テスト ============ -->
+<section id="quality" class="alt">
+  <div class="container">
+    <h2 class="section-title">品質への取り組み</h2>
+    <p class="section-lead">業務データを扱うツールとして、「元のデータを壊さない」「間違いを黙って通さない」ことを重視しています。</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">219</div><div class="stat-label">自動テスト すべて合格</div></div>
+      <div class="stat"><div class="stat-num">27</div><div class="stat-label">画面操作の自動テスト すべて合格</div></div>
+      <div class="stat"><div class="stat-num">7</div><div class="stat-label">配布版（exe）の操作テスト すべて合格</div></div>
+      <div class="stat"><div class="stat-num">13/13</div><div class="stat-label">配布版と開発版の出力ファイルが完全一致</div></div>
+    </div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>データを守るしくみ</h3>
+        <ul class="check">
+          <li>元のファイルは上書きしない（同じ名前で保存しようとすると止める）</li>
+          <li>保存中に失敗しても、壊れたファイルを残さない</li>
+          <li>Excelで開いたままのファイルに保存しようとした場合は、閉じるよう案内</li>
+          <li>処理ごとに、件数・警告・設定内容をレポートに自動保存</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>テストで確認している内容（一部）</h3>
+        <ul class="check">
+          <li>文字コードの違い、先頭0の保持、日付・数値の書き方の違い</li>
+          <li>番号の重複・空欄、許容範囲ぎりぎりの金額などの境界ケース</li>
+          <li>日本語のフォルダ名・ファイル名、長いパス</li>
+          <li>出力したExcelを実際のExcelで開いて表示を確認</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 技術スタック ============ -->
+<section id="tech">
+  <div class="container">
+    <h2 class="section-title">使用技術</h2>
+    <p class="section-lead">特別なソフトのインストールは不要です。受け取った方は、フォルダを展開してアプリを起動するだけで使えます。</p>
+    <dl class="spec">
+      <dt>動作環境</dt><dd>Windows 11（64ビット）。Excel がなくても動作します（結果のExcelを開くにはExcel等が必要です）</dd>
+      <dt>配布形式</dt><dd>exe ファイル（インストール不要・Python 等の準備も不要）</dd>
+      <dt>開発言語</dt><dd>Python 3.14</dd>
+      <dt>主なライブラリ</dt><dd>pandas（表データの処理）、openpyxl（Excelの読み書き）、tkinter（画面）</dd>
+      <dt>exe 化</dt><dd>PyInstaller 6.22</dd>
+      <dt>テスト</dt><dd>pytest による自動テスト、Windows の画面操作の自動テスト</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ 制約・未検証 ============ -->
+<section id="limits" class="alt">
+  <div class="container">
+    <h2 class="section-title">制約と未検証事項</h2>
+    <p class="section-lead">ご依頼前に確認いただきたい点です。必要に応じて、ご依頼内容に合わせて対応・検証します。</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>現在の制約</h3>
+        <ul>
+          <li>古い形式の Excel（.xls）とパスワード付きのExcelは読み込めません（.xlsx で保存し直せば利用可能）</li>
+          <li>結合するファイルは、見出し（列名）の行の位置がそろっている必要があります</li>
+          <li>画面上のプレビューは先頭200行まで（保存されるファイルには全行が入ります）</li>
+          <li>照合の許容範囲は「差が○円以内」の形式のみ（「○%以内」は未対応）</li>
+          <li>集計（日別・月別の合計など）の機能は含まれていません</li>
+          <li>アプリに電子署名がないため、初回起動時に Windows の確認画面が出る場合があります</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>未検証の事項</h3>
+        <ul>
+          <li>Windows 10 での動作（Windows 11 で確認済み）</li>
+          <li>画面の表示倍率 125%・150% での見え方（100% で確認済み）</li>
+          <li>Python が入っていない別のパソコンでの起動</li>
+          <li>数十万行を超える大きなデータでの処理時間</li>
+          <li>マクロ（VBA）を含む Excel ファイル（.xlsm）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ サンプルデータ ============ -->
+<section id="samples">
+  <div class="container">
+    <h2 class="section-title">サンプルデータ</h2>
+    <p class="section-lead">このページの例で使ったデータです。すべて架空のデータです。</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>入力データ</h3>
+        <ul>
+          <li><a href="samples/input/01_売上_2024年04月_UTF8BOM.csv" download>売上 4月分（CSV・UTF-8）</a></li>
+          <li><a href="samples/input/02_売上_2024年05月_SJIS.csv" download>売上 5月分（CSV・Shift_JIS）</a></li>
+          <li><a href="samples/input/03_売上_2024年06月_UTF8_列順違い.csv" download>売上 6月分（CSV・列順違い）</a></li>
+          <li><a href="samples/input/06_要クリーニング_入力ミス混在.csv" download>社員データ（入力ミス混在）</a></li>
+          <li><a href="samples/input/A_注文データ.csv" download>注文データ（CSV）</a> ／ <a href="samples/input/A_出荷データ.xlsx" download>出荷データ（Excel）</a></li>
+          <li><a href="samples/input/B_顧客名簿_旧_SJIS.csv" download>顧客名簿・旧</a> ／ <a href="samples/input/B_顧客名簿_新_UTF8.csv" download>顧客名簿・新</a></li>
+          <li><a href="samples/input/C_商品マスタ_旧.xlsx" download>商品マスタ・旧</a> ／ <a href="samples/input/C_商品マスタ_新.xlsx" download>商品マスタ・新</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>出力結果</h3>
+        <ul>
+          <li><a href="samples/output/結合結果_売上4-6月.csv" download>例1 結合結果（CSV）</a></li>
+          <li><a href="samples/output/変換結果_社員データ整形.csv" download>例2 変換結果（CSV）</a></li>
+          <li><a href="samples/output/照合結果_A.xlsx" download>例3 照合結果：注文と出荷（Excel）</a></li>
+          <li><a href="samples/output/照合結果_B.xlsx" download>照合結果：顧客名簿の新旧（Excel）</a></li>
+          <li><a href="samples/output/照合結果_C.xlsx" download>照合結果：商品マスタの変更点（Excel）</a></li>
+        </ul>
+        <p class="note">CSV は Excel でも開けます。文字化けする場合は、メモ帳などで開いてください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ お問い合わせ ============ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact">
+      <h2>ご相談・お見積もり</h2>
+      <p>
+        ご相談・お問い合わせは、ご利用中のクラウドソーシングサイトのメッセージ機能からお送りください。
+        「今どのような作業をしているか」「使っているファイルの種類（CSV／Excel）」が分かれば、
+        対応方法と概算をお伝えします。
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>掲載している画面・データはすべてサンプル（架空のデータ）です。実在の企業・人物とは関係ありません。</p>
+  </div>
+</footer>
+
+</body>
+</html>
